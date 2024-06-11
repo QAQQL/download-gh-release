@@ -14,11 +14,21 @@ function pass() {
 
 function downloadRelease(
   user, repo, outputdir,
-  filterRelease = pass, filterAsset = pass, leaveZipped = false
+  filterRelease = pass, filterAsset = pass, leaveZipped = false, proxyUrl = ''
 ) {
+  let proxy = '';
   const bars = new MultiProgress(process.stdout);
+  if (proxyUrl) {
+    const urlParts = new URL(proxyUrl);
+    proxy = {
+      protocol: urlParts.protocol,
+      host: urlParts.hostname,
+      port: urlParts.port
+    };
+    console.log(`Using proxy ${proxy.protocol}://${proxy.host}:${proxy.port}`);
+  }
 
-  return getReleases(user, repo)
+  return getReleases(user, repo, proxy)
     .then(releases => getLatest(releases, filterRelease, filterAsset))
     .then(release => {
       if (!release) {
@@ -42,10 +52,11 @@ function downloadRelease(
         const destf = path.join(outputdir, asset.name);
         const dest = fs.createWriteStream(destf);
 
-        return download(asset.browser_download_url, dest, progress)
+        return download(asset.browser_download_url, dest, progress, proxy)
           .then(() => {
             if (!leaveZipped && /\.zip$/.exec(destf)) {
-              return extract(destf, outputdir).then(() => fs.unlinkSync(destf));
+              return extract(destf, outputdir)
+                .then(() => fs.unlinkSync(destf));
             }
 
             return null;

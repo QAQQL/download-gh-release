@@ -1,4 +1,4 @@
-// Type definitions for download-github-release 0.3
+// Type definitions for download-gh-release 0.3
 // Definitions by: Borek Bernard <https://github.com/borekb>
 
 declare function downloadRelease(
@@ -7,7 +7,8 @@ declare function downloadRelease(
     outputDir: string,
     filterRelease?: () => boolean,
     filterAsset?: (asset: downloadRelease.GithubRelease ) => boolean,
-    leaveZipped?: boolean
+    leaveZipped?: boolean,
+    proxy?: string
 ): Promise<void>;
 
 declare namespace downloadRelease {

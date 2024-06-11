@@ -13,6 +13,7 @@ commander
   .option('-p, --prerelease', 'download prerelease')
   .option('-s, --search <regexp>', 'filter assets name')
   .option('-z, --zipped', 'don\'t extract zip files')
+  .option('--proxy <type>', 'use proxy setting like \'http://host:port\'')
   .parse(process.argv);
 
 const user = commander.args[0];
@@ -35,5 +36,5 @@ function filterAsset(asset) {
   return new RegExp(commander.search).exec(asset.name);
 }
 
-downloadRelease(user, repo, outputdir, filterRelease, filterAsset, !!commander.zipped)
+downloadRelease(user, repo, outputdir, filterRelease, filterAsset, !!commander.zipped, commander.proxy)
   .catch(err => console.error(err.message));

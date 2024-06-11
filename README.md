@@ -2,12 +2,8 @@
 
 A node module to download Github release assets. It will also uncompress zip files.
 
-[![Build Status](https://travis-ci.org/stephan83/download-github-release.svg?branch=master)](https://travis-ci.org/stephan83/download-github-release)
-[![codecov](https://codecov.io/gh/stephan83/download-github-release/branch/master/graph/badge.svg)](https://codecov.io/gh/stephan83/download-github-release)
-[![Build Status](https://david-dm.org/stephan83/download-github-release.svg)](https://david-dm.org/stephan83/download-github-release) 
-
 ```
-$ download-github-release -s darwin-x64 electron electron
+$ download-gh-release -s darwin-x64 electron electron
 Downloading electron/electron@v1.3.1...
 electron-v1.3.1-darwi... ▇▇▇▇▇---------------------------------------------------- 662.8s
 electron-v1.3.1-darwi... ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇--------- 13.4s
@@ -22,13 +18,13 @@ This is useful for instance if you have a project that depends on binaries relea
 ### Installation
 
 ```bash
-npm install -g download-github-release
+npm install -g @qaq_ql/download-gh-release
 ```
 
 ### Usage
 
 ```
-Usage: download-github-release [options] <user> <repo> [outputdir]
+Usage: download-gh-release [options] <user> <repo> [outputdir]
 
 Options:
 
@@ -37,6 +33,7 @@ Options:
   -p, --prerelease       download prerelease
   -s, --search <regexp>  filter assets name
   -z, --zipped           don't extract zip files
+  --proxy                use proxy setting like 'http://127.0.0.1:7890'
 ```
 
 ### Example
@@ -44,21 +41,27 @@ Options:
 Download `electron/electron` assets whose name contains `darwin-x64` to `/tmp`.
 
 ```
-$ download-github-release -s darwin-x64 electron electron /tmp
+$ download-gh-release -s darwin-x64 electron electron /tmp
 ```
 
+
+Download `electron/electron` use proxy `http://127.0.0.1:7890` to `/tmp`.
+
+```
+$ download-gh-release --proxy 'http://127.0.0.1:7890' electron electron /tmp
+```
 ## API
 
 ### Installation
 
 ```bash
-npm install --save download-github-release
+npm install --save @qaq_ql/download-gh-release
 ```
 
 ### Usage
 
 ```javascript
-var downloadRelease = require('download-github-release');
+var downloadRelease = require('download-gh-release');
 
 var user = 'some user';
 var repo = 'some repo';
@@ -78,17 +81,10 @@ function filterAsset(asset) {
 }
 
 downloadRelease(user, repo, outputdir, filterRelease, filterAsset, leaveZipped)
-  .then(function() {
+  .then(function () {
     console.log('All done!');
   })
-  .catch(function(err) {
+  .catch(function (err) {
     console.error(err.message);
   });
 ```
-
-## TODO
-
-- other compression formats
-- option to download specific release instead of latest?
-- option to download source?
-- private repos?

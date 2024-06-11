@@ -1,6 +1,6 @@
 {
-  "name": "download-github-release",
-  "version": "0.3.2",
+  "name": "download-gh-release",
+  "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -16,28 +16,28 @@
     "prepublish": "npm run clean && npm run build:lib"
   },
   "bin": {
-    "download-github-release": "bin/download-github-release"
+    "download-github-release": "bin/download-gh-release"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stephan83/download-github-release.git"
+    "url": "https://github.com/QAQQL/download-github-release.git"
   },
   "keywords": [
     "github",
     "release",
     "download"
   ],
-  "author": "Stephan Florquin",
+  "author": "QL",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stephan83/download-github-release/issues"
+    "url": "https://github.com/QAQQL/download-github-release/issues"
   },
   "dependencies": {
-    "commander": "^2.9.0",
+    "axios": "^1.7.2",
+    "commander": "3.0.2",
     "extract-zip": "^1.5.0",
     "gauge": "^2.6.0",
-    "multi-progress": "^2.0.0",
-    "superagent": "^3.8.0"
+    "multi-progress": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
