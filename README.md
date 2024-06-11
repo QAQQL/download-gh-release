@@ -18,7 +18,7 @@ This is useful for instance if you have a project that depends on binaries relea
 ### Installation
 
 ```bash
-npm install -g @qaq_ql/fetch-gh-release
+npm install -g fetch-gh-release
 ```
 
 ### Usage
@@ -55,7 +55,7 @@ $ fetch-gh-release --proxy 'http://127.0.0.1:7890' electron electron /tmp
 ### Installation
 
 ```bash
-npm install --save @qaq_ql/fetch-gh-release
+npm install --save fetch-gh-release
 ```
 
 ### Usage
