@@ -3,7 +3,7 @@
 A node module to download Github release assets. It will also uncompress zip files.
 
 ```
-$ download-gh-release -s darwin-x64 electron electron
+$ fetch-gh-release -s darwin-x64 electron electron
 Downloading electron/electron@v1.3.1...
 electron-v1.3.1-darwi... ▇▇▇▇▇---------------------------------------------------- 662.8s
 electron-v1.3.1-darwi... ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇--------- 13.4s
@@ -18,13 +18,13 @@ This is useful for instance if you have a project that depends on binaries relea
 ### Installation
 
 ```bash
-npm install -g @qaq_ql/download-gh-release
+npm install -g @qaq_ql/fetch-gh-release
 ```
 
 ### Usage
 
 ```
-Usage: download-gh-release [options] <user> <repo> [outputdir]
+Usage: fetch-gh-release [options] <user> <repo> [outputdir]
 
 Options:
 
@@ -41,27 +41,27 @@ Options:
 Download `electron/electron` assets whose name contains `darwin-x64` to `/tmp`.
 
 ```
-$ download-gh-release -s darwin-x64 electron electron /tmp
+$ fetch-gh-release -s darwin-x64 electron electron /tmp
 ```
 
 
 Download `electron/electron` use proxy `http://127.0.0.1:7890` to `/tmp`.
 
 ```
-$ download-gh-release --proxy 'http://127.0.0.1:7890' electron electron /tmp
+$ fetch-gh-release --proxy 'http://127.0.0.1:7890' electron electron /tmp
 ```
 ## API
 
 ### Installation
 
 ```bash
-npm install --save @qaq_ql/download-gh-release
+npm install --save @qaq_ql/fetch-gh-release
 ```
 
 ### Usage
 
 ```javascript
-var downloadRelease = require('download-gh-release');
+var downloadRelease = require('fetch-gh-release');
 
 var user = 'some user';
 var repo = 'some repo';
