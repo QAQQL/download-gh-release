@@ -1,4 +1,4 @@
-# Download Github Release
+# Fetch Github Release
 
 A node module to download Github release assets. It will also uncompress zip files.
 
@@ -18,7 +18,7 @@ This is useful for instance if you have a project that depends on binaries relea
 ### Installation
 
 ```bash
-npm install -g fetch-gh-release
+npm install -g fetch-gh-release --registry=https://registry.npmjs.org/
 ```
 
 ### Usage
@@ -55,7 +55,7 @@ $ fetch-gh-release --proxy 'http://127.0.0.1:7890' electron electron /tmp
 ### Installation
 
 ```bash
-npm install --save fetch-gh-release
+npm install --save fetch-gh-release --registry=https://registry.npmjs.org/
 ```
 
 ### Usage
